@@ -49,9 +49,20 @@ h2 {
 }
 .cls-1
 {
-  opacity: 0;
+  display: none;
 }
 .show-piece
 {
-  opacity: 1 !important;
+  display: block !important;
+}
+
+.losingScreen
+{
+  background-color: black;
+  color: red;
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
