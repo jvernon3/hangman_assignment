@@ -6,6 +6,26 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
   wordHint = document.querySelector('.currentWord');
   guessBox = document.querySelector('.selectedLetter')
   wrongGuesses = 0;
+  losingScreen = document.querySelector('.losingScreen');
+  resetButton = losingScreen.querySelector('button');
+
+
+  function showLosingScreen() {
+    losingScreen.classList.add('show-piece');
+  }
+
+  function resetGame() {
+    wrongGuesses = 0;
+    let gamePieces = Array.from(document.querySelectorAll('show-piece'));
+    gamePieces.forEach(piece => piece.classList.remove('show-piece'));
+
+    init();
+  }
+
+  //function playAgain() {
+    //reset('wrongGuesses');
+  //  losingScreen.classList.remove('show-piece');
+  //}
 
   wordHint.textContent = currentWord.split("").map(letter => letter = "__").join(" ");
 
@@ -18,13 +38,22 @@ function makeGuess() {
 
   }
 
-  if (currentWord.indexOf(this.value < 0)) {
+  if (currentWord.indexOf(this.value) < 0) {
     //person chose a wrong letter, track the wrong answer
     //index of less than 0 means the letter isn't in the word
-    document.querySelector(`.wrong${wrongGuesses}`).classList.add('show-piece');
+    if (wrongGuesses >= 5){ //if they max out their guesses, they lose
+      console.log('you lose, loser!');
+      //show losing screen
+      //create an overlay div with a reset button => turn it on when the user loses
+      showLosingScreen();
 
-    //increment the wrong guess count, show a piece of hangman
-    wrongGuesses++; //this should be last step in wrong guess path
+    } else {
+      document.querySelector(`.wrong${wrongGuesses}`).classList.add('show-piece');
+
+      //increment the wrong guess count, show a piece of hangman
+      wrongGuesses++; //this should be last step in wrong guess path
+    }
+
   } else {
     //person chose a letter that matches, guess again
   }
@@ -32,6 +61,8 @@ function makeGuess() {
 
 // event handling goes at the bottom.
 guessBox.addEventListener('keyup', makeGuess);
+
+resetButton.addEventListener('click', resetGame);
 
 
 //Function to Initialize the Game. At start do this:
