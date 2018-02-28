@@ -16,7 +16,7 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
 
   function resetGame() {
     wrongGuesses = 0;
-    let gamePieces = Array.from(document.querySelectorAll('show-piece'));
+    let gamePieces = Array.from(document.querySelectorAll('.show-piece'));
     gamePieces.forEach(piece => piece.classList.remove('show-piece'));
 
     init();
