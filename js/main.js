@@ -8,6 +8,8 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
   wrongGuesses = 0;
   losingScreen = document.querySelector('.losingScreen');
   resetButton = losingScreen.querySelector('button');
+  wrongLetters = document.querySelector('.wrong-letters');
+  wrongLetterArray = [];
 
 
   function showLosingScreen() {
@@ -15,6 +17,9 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
   }
 
   function resetGame() {
+    wrongLetterArray = [];
+    wrongLetters.textContent = ("");
+    guessBox.value = "";
     wrongGuesses = 0;
     let gamePieces = Array.from(document.querySelectorAll('.show-piece'));
     gamePieces.forEach(piece => piece.classList.remove('show-piece'));
@@ -39,6 +44,10 @@ function makeGuess() {
   }
 
   if (currentWord.indexOf(this.value) < 0) {
+    //pushes the wrong letter into the array
+    wrongLetterArray.push(this.value);
+    wrongLetters.textContent = wrongLetterArray.join(" ");
+
     //person chose a wrong letter, track the wrong answer
     //index of less than 0 means the letter isn't in the word
     if (wrongGuesses >= 5){ //if they max out their guesses, they lose
@@ -57,6 +66,7 @@ function makeGuess() {
   } else {
     //person chose a letter that matches, guess again
   }
+  guessBox.value = "";
 }
 
 // event handling goes at the bottom.
