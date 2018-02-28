@@ -66,6 +66,7 @@ function makeGuess() {
   } else {
     //person chose a letter that matches, guess again
   }
+  guessBox.value = "";
 }
 
 // event handling goes at the bottom.
