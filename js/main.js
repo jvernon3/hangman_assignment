@@ -50,9 +50,6 @@ function makeGuess() {
     // increment the wrong with SVG
       wrongGuesses++;
     }
-    if (wrongLetterArray.includes(currentGuess) === true) {
-      wrongGuesses--
-    }
 
 } else { //This else matches the if on line 37
   // person choose correct letter
