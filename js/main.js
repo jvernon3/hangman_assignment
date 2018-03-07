@@ -50,6 +50,10 @@ function makeGuess() {
     // increment the wrong with SVG
       wrongGuesses++;
     }
+    if (wrongLetterArray.includes(currentGuess) === true) {
+      wrongGuesses--
+    }
+
 } else { //This else matches the if on line 37
   // person choose correct letter
   // split the current word into an arrw so we can check the letter where the guess matches
@@ -62,6 +66,10 @@ function makeGuess() {
       hintString[index] = currentGuess;
       correctGuesses++
     }
+    if (hintString.includes(currentGuess) === true) {
+      currentGuess--
+    }
+
   });
   wordHint.textContent = "";
   wordHint.textContent = hintString.join(" ");
