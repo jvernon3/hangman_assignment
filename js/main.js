@@ -1,6 +1,6 @@
 (() => {
   //Variables always fo at the top of the file
-var words = ["javascript", "foundation", "bootstrap", "developer", "responsive", "design", "illustrator", "photoshop"];
+var words = ["box", "fight", "computer", "raven", "design", "chair", "habit", "whale"];
 
 let currentWord = words[Math.floor(Math.random()*words.length)],
     wordHint = document.querySelector('.currentWord'),
