@@ -11,7 +11,6 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
     wrongLetters = document.querySelector('.wrong-letters'),
     wrongLetterArray = []; //2 square brackets means array.
 
-
 //functions goes in the middle (logic, etc)
 function showResetScreen() {
   resetScreen.classList.add('show-piece');
@@ -66,6 +65,7 @@ function makeGuess() {
   guessBox.value = "";
   console.log(currentWord);
 }
+resetButton.addEventListener('click', resetGame);
 
 //Function to Initialize the Game. At start do this:
 function init() {
