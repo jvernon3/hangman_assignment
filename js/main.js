@@ -1,6 +1,6 @@
 (() => {
   //Variables always fo at the top of the file
-var words = ["javascript", "foundation", "bootstrap", "developer", "responsive", "design", "illustrator", "photoshop"];
+var words = ["box", "fight", "computer", "raven", "design", "chair", "habit", "whale"];
 
 let currentWord = words[Math.floor(Math.random()*words.length)],
     wordHint = document.querySelector('.currentWord'),
@@ -50,6 +50,7 @@ function makeGuess() {
     // increment the wrong with SVG
       wrongGuesses++;
     }
+
 } else { //This else matches the if on line 37
   // person choose correct letter
   // split the current word into an arrw so we can check the letter where the guess matches
@@ -62,6 +63,10 @@ function makeGuess() {
       hintString[index] = currentGuess;
       correctGuesses++
     }
+    if (hintString.includes(currentGuess) === true) {
+      currentGuess--
+    }
+
   });
   wordHint.textContent = "";
   wordHint.textContent = hintString.join(" ");
