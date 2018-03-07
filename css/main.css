@@ -20,16 +20,16 @@ main { text-align: center; }
 opacity: 0;
 }
 
-.show-piece {
-  opacity: 1 !important;
-  display: block !important;
-}
-
 .mainTitle {
   font-family: 'Architects Daughter', arial, helvetica;
   font-size: 45px;
   color: #0b56b9;
   margin: 20px;
+}
+
+.show-piece {
+  opacity: 1 !important;
+  display: block !important;
 }
 
 h2 {

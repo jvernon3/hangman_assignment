@@ -6,18 +6,21 @@ let currentWord = words[Math.floor(Math.random()*words.length)],
     wordHint = document.querySelector('.currentWord'),
     guessBox = document.querySelector('.selectedLetter'),
     wrongGuesses = 0,
+    correctGuesses = 0,
     resetScreen = document.querySelector('.reset-screen'),
     resetButton = resetScreen.querySelector('button'),
     wrongLetters = document.querySelector('.wrong-letters'),
     wrongLetterArray = []; //2 square brackets means array.
 
 //functions goes in the middle (logic, etc)
-function showResetScreen() {
+function showResetScreen(message) {
   resetScreen.classList.add('show-piece');
+  resetScreen.querySelector('h3').textContent = message;
 }
 
 function resetGame() {
   wrongGuesses = 0;
+  correctGuesses = 0;
   wrongLetters.textContent = "";
   guessBox.value = "";
   wrongLetterArray = [];
@@ -39,7 +42,7 @@ function makeGuess() {
   //track wrong answer
     if (wrongGuesses >= 6) {
       console.log('you lose!');
-      showResetScreen();
+      showResetScreen("Game Over");
     } else {
       wrongLetterArray.push(this.value);//push letter to Array
       wrongLetters.textContent = wrongLetterArray.join(" ");
@@ -57,10 +60,16 @@ function makeGuess() {
   matchAgainst.forEach((letter, index) => {
     if (letter === currentGuess) {
       hintString[index] = currentGuess;
+      correctGuesses++
     }
   });
   wordHint.textContent = "";
   wordHint.textContent = hintString.join(" ");
+
+  if (correctGuesses === currentWord.length) {
+    showResetScreen("You won!");
+  }
+
   }
   guessBox.value = "";
   console.log(currentWord);
