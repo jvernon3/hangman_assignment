@@ -1,3 +1,3 @@
 #Hangman Game Assignment
 
-Authors: Julliana Bauer, Jay Vernon and Mari Shimamura.
+Authors: Nathan Buckton, Julliana Bauer, Jay Vernon and Mari Shimamura.
